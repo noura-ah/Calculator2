@@ -45,8 +45,8 @@ public class Calculator implements java.io.Serializable {
 	
 	public boolean performOperation() {
 		
-		// when equal to 1, it supposed to have only '=' sign
-		while(Operation.size() > 1) {
+		// until empty
+		while(Operation.size() > 0) {
 			
 			// Check Multiplication first 
 			if (Operation.contains("*")) {
@@ -104,12 +104,14 @@ public class Calculator implements java.io.Serializable {
 				Operand.add(index, op1-op2);
 				
 			}
+			else 
+				Operation.remove("=");
 		}
 		return true;
 	}
 	
 	public Double getResults() {
 		
-		return performOperation()? Operand.get(0): null;
+		return performOperation()? Operand.remove(0): null;
 	}
 }
